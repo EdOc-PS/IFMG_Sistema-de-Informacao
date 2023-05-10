@@ -8,7 +8,7 @@ programa
 	funcao inicio()
 	{
 		cadeia nome, maiorn="", menorn=""
-		inteiro Nf, contf=1
+		inteiro Nf, contf=1, cont2=1
 		real salario, maiors=0.0, menors=0.0
 
 		escreva("Com quantos funcionarios serão realizados a pesquisa? ")
@@ -22,7 +22,10 @@ programa
 			    limpa()
 
 		se(salario>maiors){
+			se(cont2==1){
 			menors=salario
+			cont2++	
+			}
 			 maiors=salario
 			  maiorn=nome
 		}
@@ -40,7 +43,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 244; 
+ * @POSICAO-CURSOR = 690; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
