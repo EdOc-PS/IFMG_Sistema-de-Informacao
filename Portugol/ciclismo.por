@@ -4,13 +4,16 @@
 //leitura dos dados de um atleta, o programa deverá perguntar se o usuário deseja continuar
 //(s/n).
 
+//Altere o programa anterior para calcular e exibir o numeral e o tempo dos 2 primeiros
+//colocados.
+
 programa
 {
 	
 	funcao inicio()
 	{
-		inteiro natleta, natletacamp=0,cont=1
-		cadeia nomeatleta="", nomeatletacamp="", continuar=""
+		inteiro natleta, natletacamp=0, natleta2l=0,cont=1
+		cadeia nomeatleta="", nomeatletacamp="",nomeatleta2l="", continuar=""
 		real tempo, maiortempo=0.0, menortempo=0.0
 
 
@@ -25,8 +28,7 @@ programa
 			se(cont==1){
 				menortempo=tempo
 					cont++
-		}
-			maiortempo=tempo
+			}
 		}
 		se(tempo<=menortempo){
 			menortempo=tempo
@@ -48,7 +50,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1302; 
+ * @POSICAO-CURSOR = 1082; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
