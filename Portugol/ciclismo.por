@@ -22,7 +22,7 @@ programa
 			leia(nomeatleta)
 				escreva("Informe o numero do "+nomeatleta+": ")
 					leia(natleta)
-						escreva("Informe o tempo do "+nomeatleta+" em minutos: ")
+						escreva("Informe o tempo do "+nomeatleta+" em segundos: ")
 							leia(tempo)
 	
 		se(cont==1){
@@ -38,7 +38,7 @@ programa
 			leia(continuar)		
 	}enquanto(continuar == "Sim" ou continuar == "sim" ou continuar == "s")
 		se(continuar == "não" ou continuar == "nao" ou continuar == "n"){
-			escreva("O campeão foi "+nomeatletacamp+".\nNumero: "+natletacamp+".\nTempo: "+menortempo+" minuto(s)." )
+			escreva("O campeão foi "+nomeatletacamp+".\nNumero: "+natletacamp+".\nTempo: "+menortempo+" segundo(s)." )
 		}senao{
 			escreva("Objeto inserido é inválido")
 		}
@@ -49,7 +49,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 843; 
+ * @POSICAO-CURSOR = 1310; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
