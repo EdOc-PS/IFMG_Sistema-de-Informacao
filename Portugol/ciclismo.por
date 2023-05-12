@@ -12,9 +12,9 @@ programa
 	
 	funcao inicio()
 	{
-		inteiro natleta, natletacamp=0, natleta2l=0,cont=1
-		cadeia nomeatleta="", nomeatletacamp="",nomeatleta2l="", continuar=""
-		real tempo, maiortempo=0.0, menortempo=0.0
+		inteiro natleta, natletacamp=0,cont=1
+		cadeia nomeatleta="", nomeatletacamp="", continuar=""
+		real tempo, menortempo=0.0
 
 
 		faca{
@@ -24,11 +24,10 @@ programa
 					leia(natleta)
 						escreva("Informe o tempo do "+nomeatleta+" em minutos: ")
 							leia(tempo)
-		se(tempo>maiortempo){
-			se(cont==1){
-				menortempo=tempo
-					cont++
-			}
+	
+		se(cont==1){
+			menortempo=tempo
+				cont++
 		}
 		se(tempo<=menortempo){
 			menortempo=tempo
@@ -50,7 +49,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1082; 
+ * @POSICAO-CURSOR = 843; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
