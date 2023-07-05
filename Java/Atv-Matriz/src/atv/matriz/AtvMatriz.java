@@ -46,7 +46,7 @@ public class AtvMatriz{
          for (int l = 0; l < 10; l++) {
               SomaC = MAT[l][cont2] + SomaC;  
          }    
-         if(SomaL%2==0){
+         if(SomaC%2==0){
              System.out.print("E par e a soma da "+cont+" coluna e: "+SomaC);   
             }else{
              System.out.print("E impar e a soma da "+cont+" coluna e: "+SomaC);  
