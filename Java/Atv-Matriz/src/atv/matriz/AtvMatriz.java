@@ -12,22 +12,22 @@ public class AtvMatriz{
 
     public static void main(String[] args) {
 
-        int MAT[][] = new int[3][3];;
+        int MAT[][] = new int[10][15];;
         Random gerador = new Random();
         int SomaL = 0, cont = 1, SomaC = 0;
 
-        for (int l = 0; l < 3; l++) {
+        for (int l = 0; l < 10; l++) {
             System.out.println();
-            for (int c = 0; c < 3; c++) {
+            for (int c = 0; c < 15; c++) {
                 MAT[l][c] = gerador.nextInt(10);
                 System.out.print(MAT[l][c]+" ");
               
             }
         }
         
-        for (int l = 0; l < 3; l++) {
+        for (int l = 0; l <10; l++) {
             System.out.println();
-            for (int c = 0; c < 3; c++) {
+            for (int c = 0; c < 15; c++) {
                 SomaL = MAT[l][c] + SomaL;
             }
             if(SomaL%2==0){
@@ -41,9 +41,9 @@ public class AtvMatriz{
         }
      
         cont = 1;
-        for(int cont2 = 0; cont2 < 3; cont2++){
+        for(int cont2 = 0; cont2 < 15; cont2++){
             System.out.println();
-         for (int l = 0; l < 3; l++) {
+         for (int l = 0; l < 10; l++) {
               SomaC = MAT[l][cont2] + SomaC;  
          }    
          if(SomaL%2==0){
