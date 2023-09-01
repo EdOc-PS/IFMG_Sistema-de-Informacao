@@ -7,8 +7,9 @@ import java.util.Scanner;
 public class ContaMain {
    
         public static void main(String[] args){
-            Conta c1;
+            Conta c1, c2;
             c1 = new Conta();
+            c2 = new Conta();
             int esc;
             Scanner TEC = new Scanner(System.in);
             
@@ -18,9 +19,14 @@ public class ContaMain {
                 c1.numero = TEC.nextInt();
                 System.out.println("Digite o valor da conta: ");
                 c1.saldo = TEC.nextDouble();
-         
+                
+                c2.titular = "Link";
+                c2.saldo = 1000;
+                c2.numero = 0002;
+                
             do{
-            System.out.println("Escolha: \n 1 - Consultar saldo; \n 2 - Sacar valor; \n 3 - Depositar valor; \n 4 - sair;");
+            System.out.println("Escolha: \n 1 - Consultar saldo; \n 2 - Sacar valor; \n 3 - Depositar valor;"
+                    + "\n 4 - Transferir \n 5 - Sair;");
             esc = TEC.nextInt();
             
                 switch (esc){
@@ -37,11 +43,15 @@ public class ContaMain {
                        double deposito = TEC.nextDouble();
                        c1.Depositar(deposito);
                        break;
-
+                     case 4:
+                         System.out.println("Quanto deseja transferir");
+                         double valor = TEC.nextDouble();
+                         c1.Transferir(c2, valor);
+                        break;  
                     default:
                     throw new AssertionError();
                 }
-            }while(esc != 4);
+            }while(esc != 5);
         } 
         
 }

@@ -23,5 +23,15 @@ class Conta {
         this.saldo += deposito;
         System.out.println("Valor depositado! - Saldo final: "+this.saldo);
     }
+    
+    void Transferir(Conta destino, double valor){
+        if(this.saldo >= valor){
+            destino.saldo+=valor;
+            this.saldo -= valor;
+            System.out.println("Valor transferir!");
+        }else{
+            System.out.println("Impossivel a transferencia! ");
+        }
+    }
 }
 
