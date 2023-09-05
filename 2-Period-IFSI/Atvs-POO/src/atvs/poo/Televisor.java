@@ -8,7 +8,8 @@ package atvs.poo;
     class Televisor{
         
         int volume = 0, canal = 1;
-        boolean power;
+        boolean power = false;
+        String txt = "desligado";
         
         void Aumentarvolume(){
             if (this.volume <= 10){
@@ -35,12 +36,28 @@ package atvs.poo;
             }
         }
         void Reduzircanal(){
-             if (volume > 0){
-                this.volume--;
+             if (this.canal > 0){
+                this.canal--;
                 System.out.println("Voce mudou de canal! Esta no canal: "+this.canal);
             }else{
                 System.out.println("Não é possivel a troca de canal.");
             }
         }
+        void ligartv(){
+            this.power = true;
+            this.txt = "ligada";
+            System.out.println("Tv ligada!");
+            
+        }
+        void desligartv(){
+           this.power = false;
+           this.txt = "desligada";
+           this.volume = 0;
+           this.canal = 1; 
+        }
         
-    }
+        void mostrastatus(){
+            System.out.println("Status: \nO televisor esta no canal: "+this.canal+"\nNo volume: "+this.volume+"\nE esta: "+this.txt);
+        }
+      }
+    
