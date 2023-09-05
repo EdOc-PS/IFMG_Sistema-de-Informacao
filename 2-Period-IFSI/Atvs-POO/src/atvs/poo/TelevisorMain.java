@@ -13,7 +13,7 @@ public class TelevisorMain {
              int esc = 0;
              Scanner TEC = new Scanner(System.in);
             
-            while(esc != 7){
+            do{
                 while(T.power == false){
                     System.out.println("Ben-vindo ao televisor: \n 1 - Ligar tv; \n 2 - Mostrar status;!");
                     esc = TEC.nextInt();
@@ -50,13 +50,15 @@ public class TelevisorMain {
                             case 6:
                               T.desligartv();
                               break;
-                          
+                            case 7:
+                              System.exit(0); 
+                              break;
                             default:
                             throw new AssertionError();
                         }
                     }
             }
-           }
+           }while(esc != 7);
          }
 }
          
