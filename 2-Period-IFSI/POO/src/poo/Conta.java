@@ -5,7 +5,7 @@ class Conta {
     // atributos
     int numero;
     double saldo;
-    String titular;   
+    Cliente titular;   
     
     void ConsultaSaldo(){
         System.out.println("O saldo da Conta e: "+this.saldo);

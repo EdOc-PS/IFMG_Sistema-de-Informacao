@@ -7,20 +7,25 @@ import java.util.Scanner;
 public class ContaMain {
    
         public static void main(String[] args){
+            //formas de declarar
+            //forma 1
             Conta c1, c2;
             c1 = new Conta();
             c2 = new Conta();
+            //forma 2
+            Cliente cl = new Cliente();
+            Cliente cl2 = new Cliente();
             int esc;
             Scanner TEC = new Scanner(System.in);
-            
+                c1.titular = cl;
                 System.out.println("- Bem-vindo - \nDigite o nome do Usuario: ");
-                c1.titular = TEC.next();
+                c1.titular.nome = TEC.next();
                 System.out.println("Digite o numero da conta: ");
                 c1.numero = TEC.nextInt();
                 System.out.println("Digite o valor da conta: ");
                 c1.saldo = TEC.nextDouble();
                 
-                c2.titular = "Link";
+                cl2.nome = "link";
                 c2.saldo = 1000;
                 c2.numero = 0002;
                 
