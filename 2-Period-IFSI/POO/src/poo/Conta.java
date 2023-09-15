@@ -3,35 +3,58 @@ package poo;
 
 class Conta {
     // atributos
-    int numero;
-    double saldo;
-    Cliente titular;   
+    private int numero;
+    private double saldo;
+    private Cliente titular;   
     
-    void ConsultaSaldo(){
-        System.out.println("O saldo da Conta e: "+this.saldo);
+    void getConsultaSaldo(){
+        System.out.println("O saldo da Conta e: "+this.getSaldo());
     }
     
-    void SacarValor(double sacar){
-        if(sacar <= this.saldo){
-            this.saldo -= sacar;
-            System.out.println("Valor sacado! - Saldo final: "+this.saldo);
+    void getSacarValor(double sacar){
+        if(sacar <= this.getSaldo()){
+            this.setSaldo(this.getSaldo() - sacar);
+            System.out.println("Valor sacado! - Saldo final: "+this.getSaldo());
         }else{
             System.out.println("Valor insuficiente");
         }
     }
-    void Depositar(double deposito){
-        this.saldo += deposito;
-        System.out.println("Valor depositado! - Saldo final: "+this.saldo);
+    void setDepositar(double deposito){
+        this.setSaldo(this.getSaldo() + deposito);
+        System.out.println("Valor depositado! - Saldo final: "+this.getSaldo());
     }
     
     void Transferir(Conta destino, double valor){
-        if(this.saldo >= valor){
-            destino.saldo+=valor;
-            this.saldo -= valor;
+        if(this.getSaldo() >= valor){
+            destino.setSaldo(destino.getSaldo() + valor);
+            this.setSaldo(this.getSaldo() - valor);
             System.out.println("Valor transferir!");
         }else{
             System.out.println("Impossivel a transferencia! ");
         }
     }
+   
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public void setTitular(Cliente titular) {
+        this.titular = titular;
+    }
+
+    public Cliente getTitular() {
+        return titular;
+    }
+    public int getNumero() {
+        return numero;
+    }
+    public double getSaldo() {
+        return saldo;
+    }
+    
 }
 

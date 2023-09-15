@@ -12,9 +12,7 @@ public class PessoaMain {
            
            P1 = new Pessoa();    
            Scanner TEC = new Scanner(System.in);
-           
-           System.out.println("Digite o ano atual :");
-           
+         
            System.out.println("Selecione:\n1-Albert Einstein;\n2-Isaac Newton;");
            int esc = TEC.nextInt();
            P1.ajustaDataDeNascimento(esc);
