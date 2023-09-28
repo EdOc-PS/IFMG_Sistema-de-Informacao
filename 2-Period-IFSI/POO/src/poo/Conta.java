@@ -6,6 +6,10 @@ class Conta {
     private int numero;
     private double saldo;
     private Cliente titular;   
+
+    Conta() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     void getConsultaSaldo(){
         System.out.println("O saldo da Conta e: "+this.getSaldo());
