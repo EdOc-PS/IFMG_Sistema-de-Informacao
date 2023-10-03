@@ -24,10 +24,10 @@ public class ListaInverteMain {
         for (int i = 0; i < tam; i++) {
             VET[i] = RAN.nextInt(10);
         }
+        int esq = tam - (tam - 1);
     }
-    private void inverter(int VET, int tam){
-        if(tam == 1){
-            sout
-        }
+    private void inverter(int[] VET, int tam, int esq){
+        int t;
+        inverter(int[] VET, int tam - 1, int esq + 1);
     }
 }
