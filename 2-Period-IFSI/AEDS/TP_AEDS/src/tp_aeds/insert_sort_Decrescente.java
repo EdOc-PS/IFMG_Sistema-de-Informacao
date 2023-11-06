@@ -1,20 +1,21 @@
 package tp_aeds;
 
+import static java.lang.reflect.Array.set;
 import java.util.Random;
 
 /**
  * @author 0057138
  */
-public class insert_sort {
+public class insert_sort_Decrescente {
 
     public static void main(String[] args) {
         int[] vet = new int[1000000];
         Random rdm = new Random(100);
-     
+        
         //System.out.println("Vetor não ordenado: ");
         for (int i = 0; i < vet.length; i++) {
-            vet[i] = rdm.nextInt(100);
-           //System.out.print(vet[i] + " ");
+            vet[i] = rdm.nextInt(100);          
+            //System.out.print(vet[i] + " ");
         }
        
         long tempoI = System.currentTimeMillis();
@@ -22,7 +23,7 @@ public class insert_sort {
             int key = vet[i];
             int j = i - 1;
 
-            while (j >= 0 && vet[j] > key) {
+            while (j >= 0 && vet[j] < key) {
                 vet[j + 1] = vet[j];
                 j = j - 1;
             }
