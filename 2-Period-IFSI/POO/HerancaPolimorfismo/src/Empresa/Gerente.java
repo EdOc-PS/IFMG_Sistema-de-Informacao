@@ -2,44 +2,60 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Empresa;
-
-import Empresa_Jaboc.Funcionario;
+package empresa;
 
 /**
  *
- * @author 0057138
+ * @author suelen.mapa
  */
-public class Gerente extends Funcionario{
- 
-    private int senhaG;
-    private int qtdefuncionariosG;
+public class Gerente extends Funcionario {
 
-    public Gerente(int senhaG, String nomeF, float salarioF, String cpfF) {
-        super(nomeF, salarioF, cpfF);
-        this.senhaG = senhaG;
- 
+    private int senha;
+    private int numFuncGerenciados;
+
+    public Gerente(int senha, String nome, String cpf) {
+
+        super(nome, cpf);
+        
+        this.senha = senha;
+
     }
-    public boolean validarSenha(int senhaG){
-        System.out.println("Validação de senha do gerente "+this.getNomeF());
-        return senhaG == this.senhaG;
+
+    public boolean validaSenha(int senha) {
+
+        System.out.println("Sou o gerente " + this.nome
+                + " e estou validando minha senha!");
+
+        if (senha == this.senha) {
+
+            return true;
+        } else {
+
+            return false;
+        }
+
     }
     
-    
-    public int getSenhaG() {
-        return senhaG;
+     public double calculaBonificacao(){
+        
+        return (super.calculaBonificacao()+1000 );
+        
     }
 
-    public void setSenhaG(int senhaG) {
-        this.senhaG = senhaG;
+    public int getSenha() {
+        return senha;
     }
 
-    public int getQtdefuncionariosG0() {
-        return qtdefuncionariosG;
+    public void setSenha(int senha) {
+        this.senha = senha;
     }
 
-    public void setQtdefuncionariosG0(int qtdefuncionariosG0) {
-        this.qtdefuncionariosG = qtdefuncionariosG0;
+    public int getNumFuncGerenciados() {
+        return numFuncGerenciados;
     }
-      
+
+    public void setNumFuncGerenciados(int numFuncGerenciados) {
+        this.numFuncGerenciados = numFuncGerenciados;
+    }
+
 }

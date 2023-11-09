@@ -2,54 +2,58 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Empresa;
+package empresa;
 
 /**
  *
- * @author 0057138
+ * @author suelen.mapa
  */
 public class Funcionario {
-   protected String nomeF;
-   protected float salarioF;
-   protected String cpfF;
-
-   
-/*
-    public Funcionario(String nomeF, float salarioF, String cpfF) {
-        this.nomeF = nomeF;
-        this.salarioF = 0;
-        this.cpfF = cpfF;
+    
+    protected String nome;
+    private String cpf;
+    protected double salario;
+    
+    
+    public Funcionario(String nome, String cpf){
+        this.nome = nome;
+        this.cpf = cpf;
+        this.salario = 0.0;
+        
     }
-*/
-   
-   
-
-    public String getNomeF() {
-        return nomeF;
-    }
-
-    public void setNomeF(String nomeF) {
-        this.nomeF = nomeF;
+    
+    public double calculaBonificacao(){
+        
+        return (this.salario * 0.20);
+        
     }
 
-    public float getSalarioF() {
-        return salarioF;
+    public String getNome() {
+        return nome;
     }
 
-    public void setSalarioF(float salarioF) {
-        this.salarioF = salarioF;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getCpfF() {
-        return cpfF;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setCpfF(String cpfF) {
-        this.cpfF = cpfF;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
-     @Override
-     public String toString() {
-        return "Funcionario{" + "nomeF=" + nomeF + ", salarioF=" + salarioF + ", cpfF=" + cpfF + '}';
+
+    public double getSalario() {
+        return salario;
     }
-   
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+    
+    
+    
+            
+    
 }
