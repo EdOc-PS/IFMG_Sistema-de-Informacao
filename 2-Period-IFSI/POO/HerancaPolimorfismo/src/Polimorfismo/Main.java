@@ -32,7 +32,7 @@ public class Main {
                      C.morder();
                     break;
                 
-                case 4:
+                case 3:
                 default:
                     System.out.println("Opcao invalida");
      }

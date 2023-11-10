@@ -18,8 +18,16 @@ public class Empresa {
         Funcionario f1 = new Funcionario("Maria", "0102");
         Gerente g = new Gerente(1234, "Joao", "0304");
         Diretor d = new Diretor("Paula", "0706", 5678);
-         
+      
+        f1.setSalario(1000);
+        g.setSalario(2000);
+        d.setSalario(5000);
         
+        
+        ControleBonificacao cb = new ControleBonificacao();
+        cb.registra(f1);
+        cb.registra(g);
+        /*
         f1.setSalario(1500.0);
         g.setSalario(5000.0);
         
@@ -30,7 +38,6 @@ public class Empresa {
         }else{
             System.out.println(" erro ");
         }
-        /*
         System.out.println("Eu sou o(a): " + f1.getNome() + " e meu salario eh: "+
                 f1.getSalario());
         System.out.println("Sou um funcionario(a) e meu bonus eh: "

@@ -17,5 +17,9 @@ public class Diretor extends Gerente {
         this.numDepto = 4;
         
     }
-    
+    public double calculaBonificacao(){
+        
+        return (super.calculaBonificacao()+9000 );
+        
+    }
 }

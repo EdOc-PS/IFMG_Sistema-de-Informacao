@@ -11,7 +11,7 @@ package empresa;
 public class Funcionario {
     
     protected String nome;
-    private String cpf;
+    protected String cpf;
     protected double salario;
     
     
