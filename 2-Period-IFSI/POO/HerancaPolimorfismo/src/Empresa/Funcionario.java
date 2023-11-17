@@ -8,21 +8,21 @@ package empresa;
  *
  * @author suelen.mapa
  */
-public class Funcionario {
+public abstract class Funcionario {
     
     protected String nome;
-    protected String cpf;
+    private String cpf;
     protected double salario;
     
     
-    public Funcionario(String nome, String cpf){
+    public Funcionario(String nome, String cp, double salario){
         this.nome = nome;
         this.cpf = cpf;
         this.salario = 0.0;
         
     }
     
-    public double calculaBonificacao(){
+    public  double calculaBonificacao(){
         
         return (this.salario * 0.20);
         

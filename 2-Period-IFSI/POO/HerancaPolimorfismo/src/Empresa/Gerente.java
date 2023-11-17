@@ -13,9 +13,9 @@ public class Gerente extends Funcionario {
     private int senha;
     private int numFuncGerenciados;
 
-    public Gerente(int senha, String nome, String cpf) {
+    public Gerente(int senha, String nome, String cpf, double salario) {
 
-        super(nome, cpf);
+        super(nome, cpf, salario);
         
         this.senha = senha;
 

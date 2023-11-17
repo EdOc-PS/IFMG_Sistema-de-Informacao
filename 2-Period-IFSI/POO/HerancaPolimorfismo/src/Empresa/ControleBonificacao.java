@@ -2,20 +2,29 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Empresa;
-
-import empresa.Funcionario;
-
+package empresa;
 
 /**
  *
- * @author 0057138
+ * @author suelen.mapa
  */
 public class ControleBonificacao {
-    private double totalbonificacao = 0;
+    
+    private  double totalBonificacao = 0;
+    
+    public  void registra(Funcionario f){
+        if(!(f instanceof Diretor)){
+              totalBonificacao += f.calculaBonificacao();
             
-    public void registra(Funcionario f){
-        this.totalbonificacao = f.calculaBonificacao() ;
+        }
+      
+        
     }
+
+    public double getTotalBonificacao() {
+        return totalBonificacao;
+    }
+    
+    
     
 }

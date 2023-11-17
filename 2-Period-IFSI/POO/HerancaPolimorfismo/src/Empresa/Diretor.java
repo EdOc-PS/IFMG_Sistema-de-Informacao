@@ -8,18 +8,21 @@ package empresa;
  *
  * @author suelen.mapa
  */
-public class Diretor extends Gerente {
+public final class Diretor extends Gerente {
     
     private int numDepto;
     
-    public Diretor(String nome, String cpf, int senha){
-        super(senha,nome, cpf);
+    public Diretor(String nome, String cpf, int senha, double salario){
+        super(senha, nome, cpf, salario);
         this.numDepto = 4;
         
     }
+    
+    @Override
     public double calculaBonificacao(){
         
-        return (super.calculaBonificacao()+9000 );
+        return (super.calculaBonificacao()+5000 );
         
     }
+    
 }
