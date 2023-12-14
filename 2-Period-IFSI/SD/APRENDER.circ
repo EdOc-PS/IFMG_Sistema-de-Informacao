@@ -5,7 +5,13 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
   <lib desc="#Gates" name="1"/>
   <lib desc="#Plexers" name="2"/>
   <lib desc="#Arithmetic" name="3"/>
-  <lib desc="#Memory" name="4"/>
+  <lib desc="#Memory" name="4">
+    <tool name="ROM">
+      <a name="contents">addr/data: 8 8
+0
+</a>
+    </tool>
+  </lib>
   <lib desc="#I/O" name="5"/>
   <lib desc="#Base" name="6">
     <tool name="Text Tool">
@@ -64,7 +70,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(480,140)" to="(480,170)"/>
     <wire from="(270,270)" to="(270,300)"/>
     <wire from="(380,140)" to="(380,170)"/>
-    <wire from="(240,100)" to="(240,130)"/>
     <wire from="(200,320)" to="(200,350)"/>
     <wire from="(180,300)" to="(210,300)"/>
     <wire from="(410,50)" to="(440,50)"/>
@@ -82,7 +87,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(190,150)" to="(200,150)"/>
     <wire from="(450,70)" to="(450,120)"/>
     <wire from="(200,320)" to="(210,320)"/>
-    <wire from="(180,100)" to="(240,100)"/>
     <wire from="(190,170)" to="(250,170)"/>
     <wire from="(440,130)" to="(490,130)"/>
     <wire from="(440,130)" to="(440,140)"/>
@@ -94,6 +98,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(70,130)" to="(110,130)"/>
     <wire from="(80,300)" to="(120,300)"/>
     <wire from="(380,170)" to="(480,170)"/>
+    <wire from="(250,100)" to="(250,130)"/>
     <wire from="(110,320)" to="(110,350)"/>
     <wire from="(130,60)" to="(160,60)"/>
     <wire from="(140,230)" to="(170,230)"/>
@@ -107,54 +112,56 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(430,140)" to="(440,140)"/>
     <wire from="(350,120)" to="(360,120)"/>
     <wire from="(240,150)" to="(250,150)"/>
+    <wire from="(240,130)" to="(250,130)"/>
     <wire from="(100,150)" to="(110,150)"/>
     <wire from="(110,320)" to="(120,320)"/>
     <wire from="(460,90)" to="(540,90)"/>
+    <wire from="(180,100)" to="(250,100)"/>
     <wire from="(530,120)" to="(540,120)"/>
-    <comp lib="4" loc="(150,130)" name="D Flip-Flop"/>
-    <comp lib="0" loc="(440,50)" name="Splitter">
-      <a name="facing" val="south"/>
-      <a name="bit0" val="1"/>
-      <a name="bit1" val="0"/>
-    </comp>
-    <comp lib="4" loc="(430,120)" name="J-K Flip-Flop"/>
-    <comp lib="0" loc="(80,350)" name="Constant"/>
-    <comp lib="0" loc="(160,60)" name="Splitter">
-      <a name="facing" val="south"/>
-      <a name="bit0" val="1"/>
-      <a name="bit1" val="0"/>
-    </comp>
-    <comp lib="0" loc="(80,300)" name="Clock"/>
-    <comp lib="0" loc="(410,50)" name="Probe">
-      <a name="radix" val="10unsigned"/>
-    </comp>
-    <comp lib="6" loc="(369,309)" name="Text">
-      <a name="text" val="REGRA"/>
-    </comp>
-    <comp lib="6" loc="(466,330)" name="Text">
-      <a name="text" val="Saiu do Q e foi para o Clock é decrescente "/>
-    </comp>
     <comp lib="0" loc="(350,120)" name="Clock"/>
-    <comp lib="6" loc="(474,351)" name="Text">
-      <a name="text" val="Saiu do Q barra e foi para o Clock é crescente"/>
-    </comp>
-    <comp lib="0" loc="(350,170)" name="Constant"/>
-    <comp lib="4" loc="(160,300)" name="T Flip-Flop"/>
     <comp lib="0" loc="(140,230)" name="Probe">
       <a name="radix" val="10unsigned"/>
     </comp>
-    <comp lib="4" loc="(250,300)" name="T Flip-Flop"/>
-    <comp lib="4" loc="(530,120)" name="J-K Flip-Flop"/>
-    <comp lib="0" loc="(70,130)" name="Clock"/>
     <comp lib="0" loc="(170,230)" name="Splitter">
       <a name="facing" val="south"/>
       <a name="bit0" val="1"/>
       <a name="bit1" val="0"/>
     </comp>
+    <comp lib="0" loc="(80,350)" name="Constant"/>
+    <comp lib="4" loc="(150,130)" name="D Flip-Flop"/>
+    <comp lib="4" loc="(430,120)" name="J-K Flip-Flop"/>
+    <comp lib="4" loc="(250,300)" name="T Flip-Flop"/>
+    <comp lib="0" loc="(350,170)" name="Constant"/>
+    <comp lib="6" loc="(369,309)" name="Text">
+      <a name="text" val="REGRA"/>
+    </comp>
+    <comp lib="0" loc="(70,130)" name="Clock"/>
+    <comp lib="4" loc="(240,130)" name="D Flip-Flop"/>
+    <comp lib="6" loc="(474,351)" name="Text">
+      <a name="text" val="Saiu do Q barra e foi para o Clock é crescente"/>
+    </comp>
+    <comp lib="0" loc="(440,50)" name="Splitter">
+      <a name="facing" val="south"/>
+      <a name="bit0" val="1"/>
+      <a name="bit1" val="0"/>
+    </comp>
+    <comp lib="4" loc="(530,120)" name="J-K Flip-Flop"/>
+    <comp lib="0" loc="(410,50)" name="Probe">
+      <a name="radix" val="10unsigned"/>
+    </comp>
     <comp lib="0" loc="(130,60)" name="Probe">
       <a name="radix" val="10unsigned"/>
     </comp>
-    <comp lib="4" loc="(240,130)" name="D Flip-Flop"/>
+    <comp lib="0" loc="(80,300)" name="Clock"/>
+    <comp lib="4" loc="(160,300)" name="T Flip-Flop"/>
+    <comp lib="6" loc="(466,330)" name="Text">
+      <a name="text" val="Saiu do Q e foi para o Clock é decrescente "/>
+    </comp>
+    <comp lib="0" loc="(160,60)" name="Splitter">
+      <a name="facing" val="south"/>
+      <a name="bit0" val="1"/>
+      <a name="bit1" val="0"/>
+    </comp>
   </circuit>
   <circuit name="Contadores2">
     <a name="circuit" val="Contadores2"/>
@@ -359,49 +366,23 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(240,390)" to="(250,390)"/>
     <wire from="(300,410)" to="(300,460)"/>
     <wire from="(920,110)" to="(930,110)"/>
-    <comp lib="0" loc="(660,130)" name="Constant"/>
+    <comp lib="4" loc="(750,380)" name="T Flip-Flop"/>
+    <comp lib="0" loc="(40,370)" name="Clock"/>
+    <comp lib="0" loc="(720,30)" name="Probe">
+      <a name="radix" val="10unsigned"/>
+    </comp>
     <comp lib="6" loc="(476,340)" name="Text">
       <a name="text" val="Valor inicial 6 (110) - Vai em baixo"/>
     </comp>
-    <comp lib="6" loc="(1138,116)" name="Text">
-      <a name="text" val="Valor Final 6 (110) + 1 = 7 (111) - Vai em cima "/>
-    </comp>
     <comp lib="4" loc="(190,80)" name="D Flip-Flop"/>
+    <comp lib="0" loc="(660,130)" name="Constant"/>
+    <comp lib="0" loc="(80,20)" name="Probe">
+      <a name="radix" val="10unsigned"/>
+    </comp>
     <comp lib="6" loc="(465,83)" name="Text">
       <a name="text" val="Valor inicial 2 (010) - Vai em baixo"/>
     </comp>
-    <comp lib="6" loc="(421,667)" name="Text">
-      <a name="text" val="Ex: 2 (010 -&gt; 010)"/>
-    </comp>
-    <comp lib="0" loc="(680,380)" name="Clock"/>
-    <comp lib="0" loc="(90,310)" name="Probe">
-      <a name="radix" val="10unsigned"/>
-    </comp>
-    <comp lib="4" loc="(750,380)" name="T Flip-Flop"/>
-    <comp lib="1" loc="(1070,200)" name="AND Gate"/>
-    <comp lib="6" loc="(261,611)" name="Text">
-      <a name="text" val="D"/>
-    </comp>
     <comp lib="0" loc="(760,320)" name="Splitter">
-      <a name="facing" val="south"/>
-      <a name="fanout" val="3"/>
-      <a name="incoming" val="3"/>
-      <a name="bit0" val="2"/>
-      <a name="bit2" val="0"/>
-    </comp>
-    <comp lib="6" loc="(874,620)" name="Text">
-      <a name="text" val="T"/>
-    </comp>
-    <comp lib="6" loc="(1105,93)" name="Text">
-      <a name="text" val="Valor inicial 2 (010) - Vai em baixo"/>
-    </comp>
-    <comp lib="6" loc="(527,666)" name="Text">
-      <a name="text" val="Ex: 6 (110 -&gt; 011)"/>
-    </comp>
-    <comp lib="0" loc="(730,320)" name="Probe">
-      <a name="radix" val="10unsigned"/>
-    </comp>
-    <comp lib="0" loc="(120,310)" name="Splitter">
       <a name="facing" val="south"/>
       <a name="fanout" val="3"/>
       <a name="incoming" val="3"/>
@@ -411,6 +392,44 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <comp lib="6" loc="(1116,350)" name="Text">
       <a name="text" val="Valor inicial 6 (110) - Vai em baixo"/>
     </comp>
+    <comp lib="0" loc="(670,90)" name="Clock"/>
+    <comp lib="6" loc="(498,106)" name="Text">
+      <a name="text" val="Valor Final 6 (110) + 1 = 7 (111) - Vai em cima "/>
+    </comp>
+    <comp lib="1" loc="(430,190)" name="AND Gate"/>
+    <comp lib="4" loc="(290,370)" name="D Flip-Flop"/>
+    <comp lib="0" loc="(680,380)" name="Clock"/>
+    <comp lib="6" loc="(538,644)" name="Text">
+      <a name="text" val="OBS: Lembre-se de Inverter a ordem dos valores finais e iniciais"/>
+    </comp>
+    <comp lib="4" loc="(100,80)" name="D Flip-Flop"/>
+    <comp lib="0" loc="(30,80)" name="Clock"/>
+    <comp lib="0" loc="(120,310)" name="Splitter">
+      <a name="facing" val="south"/>
+      <a name="fanout" val="3"/>
+      <a name="incoming" val="3"/>
+      <a name="bit0" val="2"/>
+      <a name="bit2" val="0"/>
+    </comp>
+    <comp lib="4" loc="(200,370)" name="D Flip-Flop"/>
+    <comp lib="6" loc="(874,620)" name="Text">
+      <a name="text" val="T"/>
+    </comp>
+    <comp lib="6" loc="(1105,93)" name="Text">
+      <a name="text" val="Valor inicial 2 (010) - Vai em baixo"/>
+    </comp>
+    <comp lib="0" loc="(730,320)" name="Probe">
+      <a name="radix" val="10unsigned"/>
+    </comp>
+    <comp lib="4" loc="(930,380)" name="T Flip-Flop"/>
+    <comp lib="1" loc="(1070,200)" name="AND Gate"/>
+    <comp lib="6" loc="(1138,116)" name="Text">
+      <a name="text" val="Valor Final 6 (110) + 1 = 7 (111) - Vai em cima "/>
+    </comp>
+    <comp lib="4" loc="(110,370)" name="D Flip-Flop"/>
+    <comp lib="6" loc="(508,361)" name="Text">
+      <a name="text" val="Valor Final 2 (010) - 1 = 1 (001) - Vai em cima "/>
+    </comp>
     <comp lib="0" loc="(110,20)" name="Splitter">
       <a name="facing" val="south"/>
       <a name="fanout" val="3"/>
@@ -418,7 +437,18 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="bit0" val="2"/>
       <a name="bit2" val="0"/>
     </comp>
-    <comp lib="0" loc="(40,370)" name="Clock"/>
+    <comp lib="6" loc="(527,666)" name="Text">
+      <a name="text" val="Ex: 6 (110 -&gt; 011)"/>
+    </comp>
+    <comp lib="4" loc="(830,90)" name="T Flip-Flop"/>
+    <comp lib="4" loc="(740,90)" name="T Flip-Flop"/>
+    <comp lib="4" loc="(920,90)" name="T Flip-Flop"/>
+    <comp lib="0" loc="(90,310)" name="Probe">
+      <a name="radix" val="10unsigned"/>
+    </comp>
+    <comp lib="6" loc="(421,667)" name="Text">
+      <a name="text" val="Ex: 2 (010 -&gt; 010)"/>
+    </comp>
     <comp lib="0" loc="(750,30)" name="Splitter">
       <a name="facing" val="south"/>
       <a name="fanout" val="3"/>
@@ -426,37 +456,14 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="bit0" val="2"/>
       <a name="bit2" val="0"/>
     </comp>
-    <comp lib="0" loc="(670,90)" name="Clock"/>
-    <comp lib="4" loc="(830,90)" name="T Flip-Flop"/>
     <comp lib="4" loc="(280,80)" name="D Flip-Flop"/>
-    <comp lib="1" loc="(430,190)" name="AND Gate"/>
-    <comp lib="4" loc="(110,370)" name="D Flip-Flop"/>
-    <comp lib="4" loc="(290,370)" name="D Flip-Flop"/>
-    <comp lib="0" loc="(720,30)" name="Probe">
-      <a name="radix" val="10unsigned"/>
+    <comp lib="6" loc="(261,611)" name="Text">
+      <a name="text" val="D"/>
     </comp>
-    <comp lib="0" loc="(680,430)" name="Constant"/>
-    <comp lib="4" loc="(100,80)" name="D Flip-Flop"/>
     <comp lib="1" loc="(440,480)" name="AND Gate"/>
-    <comp lib="6" loc="(508,361)" name="Text">
-      <a name="text" val="Valor Final 2 (010) - 1 = 1 (001) - Vai em cima "/>
-    </comp>
-    <comp lib="6" loc="(538,644)" name="Text">
-      <a name="text" val="OBS: Lembre-se de Inverter a ordem dos valores finais e iniciais"/>
-    </comp>
-    <comp lib="0" loc="(80,20)" name="Probe">
-      <a name="radix" val="10unsigned"/>
-    </comp>
-    <comp lib="4" loc="(840,380)" name="T Flip-Flop"/>
-    <comp lib="4" loc="(930,380)" name="T Flip-Flop"/>
-    <comp lib="4" loc="(200,370)" name="D Flip-Flop"/>
     <comp lib="1" loc="(1080,490)" name="AND Gate"/>
-    <comp lib="0" loc="(30,80)" name="Clock"/>
-    <comp lib="4" loc="(740,90)" name="T Flip-Flop"/>
-    <comp lib="4" loc="(920,90)" name="T Flip-Flop"/>
-    <comp lib="6" loc="(498,106)" name="Text">
-      <a name="text" val="Valor Final 6 (110) + 1 = 7 (111) - Vai em cima "/>
-    </comp>
+    <comp lib="0" loc="(680,430)" name="Constant"/>
+    <comp lib="4" loc="(840,380)" name="T Flip-Flop"/>
     <comp lib="6" loc="(1148,371)" name="Text">
       <a name="text" val="Valor Final 2 (010) - 1 = 1 (001) - Vai em cima "/>
     </comp>
@@ -466,43 +473,315 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <a name="clabel" val=""/>
     <a name="clabelup" val="east"/>
     <a name="clabelfont" val="SansSerif plain 12"/>
+    <wire from="(900,430)" to="(1080,430)"/>
+    <wire from="(910,350)" to="(910,620)"/>
+    <wire from="(170,280)" to="(420,280)"/>
+    <wire from="(170,600)" to="(420,600)"/>
+    <wire from="(1010,420)" to="(1010,620)"/>
+    <wire from="(1110,430)" to="(1210,430)"/>
+    <wire from="(810,310)" to="(810,440)"/>
+    <wire from="(1010,90)" to="(1010,120)"/>
+    <wire from="(820,60)" to="(820,90)"/>
+    <wire from="(90,160)" to="(200,160)"/>
+    <wire from="(900,100)" to="(900,120)"/>
+    <wire from="(380,510)" to="(420,510)"/>
+    <wire from="(200,160)" to="(300,160)"/>
+    <wire from="(280,230)" to="(280,330)"/>
+    <wire from="(840,190)" to="(860,190)"/>
+    <wire from="(1000,510)" to="(1000,620)"/>
+    <wire from="(930,120)" to="(950,120)"/>
+    <wire from="(720,120)" to="(720,160)"/>
+    <wire from="(800,370)" to="(1080,370)"/>
+    <wire from="(180,530)" to="(180,630)"/>
+    <wire from="(1070,550)" to="(1080,550)"/>
+    <wire from="(770,40)" to="(790,40)"/>
+    <wire from="(1120,280)" to="(1130,280)"/>
+    <wire from="(1120,320)" to="(1130,320)"/>
+    <wire from="(290,290)" to="(290,590)"/>
+    <wire from="(180,60)" to="(180,100)"/>
+    <wire from="(810,100)" to="(900,100)"/>
+    <wire from="(200,120)" to="(200,160)"/>
+    <wire from="(910,120)" to="(910,350)"/>
+    <wire from="(280,460)" to="(280,630)"/>
+    <wire from="(900,140)" to="(900,430)"/>
+    <wire from="(450,290)" to="(460,290)"/>
+    <wire from="(280,330)" to="(420,330)"/>
+    <wire from="(450,410)" to="(460,410)"/>
+    <wire from="(450,530)" to="(460,530)"/>
+    <wire from="(100,140)" to="(100,190)"/>
+    <wire from="(160,120)" to="(170,120)"/>
+    <wire from="(810,440)" to="(810,560)"/>
+    <wire from="(800,370)" to="(800,620)"/>
+    <wire from="(80,160)" to="(90,160)"/>
+    <wire from="(940,140)" to="(950,140)"/>
+    <wire from="(1120,240)" to="(1120,280)"/>
+    <wire from="(1120,320)" to="(1120,360)"/>
+    <wire from="(290,590)" to="(420,590)"/>
+    <wire from="(800,120)" to="(810,120)"/>
+    <wire from="(940,140)" to="(940,190)"/>
+    <wire from="(1110,300)" to="(1130,300)"/>
+    <wire from="(810,310)" to="(1080,310)"/>
+    <wire from="(170,340)" to="(170,600)"/>
+    <wire from="(370,580)" to="(420,580)"/>
+    <wire from="(460,230)" to="(460,240)"/>
+    <wire from="(460,350)" to="(460,360)"/>
+    <wire from="(1110,520)" to="(1210,520)"/>
+    <wire from="(830,160)" to="(930,160)"/>
+    <wire from="(180,470)" to="(420,470)"/>
+    <wire from="(720,160)" to="(830,160)"/>
+    <wire from="(380,400)" to="(420,400)"/>
+    <wire from="(900,540)" to="(900,620)"/>
+    <wire from="(90,120)" to="(120,120)"/>
+    <wire from="(810,60)" to="(810,100)"/>
+    <wire from="(830,120)" to="(830,160)"/>
+    <wire from="(800,260)" to="(1080,260)"/>
+    <wire from="(1010,120)" to="(1010,290)"/>
+    <wire from="(1110,240)" to="(1120,240)"/>
+    <wire from="(1110,360)" to="(1120,360)"/>
+    <wire from="(260,140)" to="(280,140)"/>
+    <wire from="(360,120)" to="(380,120)"/>
+    <wire from="(490,530)" to="(510,530)"/>
+    <wire from="(100,140)" to="(120,140)"/>
+    <wire from="(290,120)" to="(290,290)"/>
+    <wire from="(200,120)" to="(220,120)"/>
+    <wire from="(460,550)" to="(460,590)"/>
+    <wire from="(460,470)" to="(460,510)"/>
+    <wire from="(280,460)" to="(420,460)"/>
+    <wire from="(210,140)" to="(210,190)"/>
+    <wire from="(810,120)" to="(810,310)"/>
+    <wire from="(210,140)" to="(220,140)"/>
+    <wire from="(1010,290)" to="(1080,290)"/>
+    <wire from="(370,580)" to="(370,630)"/>
+    <wire from="(730,140)" to="(730,190)"/>
+    <wire from="(790,120)" to="(800,120)"/>
+    <wire from="(890,140)" to="(900,140)"/>
+    <wire from="(710,160)" to="(720,160)"/>
+    <wire from="(170,60)" to="(170,120)"/>
+    <wire from="(180,470)" to="(180,530)"/>
+    <wire from="(810,440)" to="(1080,440)"/>
+    <wire from="(1000,510)" to="(1080,510)"/>
+    <wire from="(1000,230)" to="(1080,230)"/>
     <wire from="(190,90)" to="(380,90)"/>
+    <wire from="(170,340)" to="(420,340)"/>
+    <wire from="(460,280)" to="(460,290)"/>
+    <wire from="(460,400)" to="(460,410)"/>
+    <wire from="(1010,290)" to="(1010,420)"/>
+    <wire from="(810,560)" to="(1040,560)"/>
+    <wire from="(910,350)" to="(1080,350)"/>
+    <wire from="(1080,540)" to="(1080,550)"/>
+    <wire from="(1160,300)" to="(1210,300)"/>
+    <wire from="(180,120)" to="(180,410)"/>
+    <wire from="(830,120)" to="(850,120)"/>
+    <wire from="(940,190)" to="(960,190)"/>
+    <wire from="(990,120)" to="(1010,120)"/>
+    <wire from="(900,430)" to="(900,540)"/>
+    <wire from="(310,190)" to="(340,190)"/>
+    <wire from="(730,140)" to="(750,140)"/>
+    <wire from="(270,120)" to="(290,120)"/>
+    <wire from="(720,120)" to="(750,120)"/>
+    <wire from="(490,260)" to="(510,260)"/>
+    <wire from="(490,380)" to="(510,380)"/>
+    <wire from="(300,120)" to="(300,160)"/>
+    <wire from="(290,590)" to="(290,630)"/>
+    <wire from="(100,190)" to="(120,190)"/>
+    <wire from="(450,230)" to="(460,230)"/>
+    <wire from="(280,230)" to="(420,230)"/>
+    <wire from="(450,350)" to="(460,350)"/>
+    <wire from="(800,60)" to="(800,120)"/>
+    <wire from="(450,470)" to="(460,470)"/>
+    <wire from="(380,220)" to="(380,400)"/>
+    <wire from="(450,590)" to="(460,590)"/>
+    <wire from="(360,140)" to="(370,140)"/>
+    <wire from="(160,140)" to="(170,140)"/>
+    <wire from="(260,120)" to="(270,120)"/>
+    <wire from="(1010,420)" to="(1080,420)"/>
+    <wire from="(290,290)" to="(420,290)"/>
+    <wire from="(840,140)" to="(850,140)"/>
+    <wire from="(900,120)" to="(910,120)"/>
+    <wire from="(380,510)" to="(380,630)"/>
+    <wire from="(840,140)" to="(840,190)"/>
+    <wire from="(280,330)" to="(280,460)"/>
+    <wire from="(170,140)" to="(170,280)"/>
+    <wire from="(820,90)" to="(1010,90)"/>
     <wire from="(270,100)" to="(270,120)"/>
+    <wire from="(180,410)" to="(420,410)"/>
+    <wire from="(180,530)" to="(420,530)"/>
+    <wire from="(1000,140)" to="(1000,230)"/>
+    <wire from="(1000,230)" to="(1000,510)"/>
     <wire from="(380,90)" to="(380,120)"/>
     <wire from="(190,60)" to="(190,90)"/>
-    <wire from="(170,140)" to="(170,300)"/>
-    <wire from="(90,120)" to="(120,120)"/>
+    <wire from="(170,600)" to="(170,630)"/>
+    <wire from="(380,220)" to="(420,220)"/>
+    <wire from="(280,140)" to="(280,230)"/>
+    <wire from="(380,120)" to="(380,220)"/>
+    <wire from="(800,260)" to="(800,370)"/>
     <wire from="(180,100)" to="(270,100)"/>
-    <wire from="(280,140)" to="(280,300)"/>
-    <wire from="(370,140)" to="(370,300)"/>
-    <wire from="(260,140)" to="(280,140)"/>
-    <wire from="(270,120)" to="(290,120)"/>
-    <wire from="(360,120)" to="(380,120)"/>
-    <wire from="(180,60)" to="(180,100)"/>
+    <wire from="(930,120)" to="(930,160)"/>
+    <wire from="(730,190)" to="(750,190)"/>
+    <wire from="(300,120)" to="(320,120)"/>
+    <wire from="(90,120)" to="(90,160)"/>
+    <wire from="(380,400)" to="(380,510)"/>
     <wire from="(140,40)" to="(160,40)"/>
-    <wire from="(290,120)" to="(290,300)"/>
-    <wire from="(380,120)" to="(380,300)"/>
-    <wire from="(360,140)" to="(370,140)"/>
-    <wire from="(160,120)" to="(170,120)"/>
-    <wire from="(160,140)" to="(170,140)"/>
+    <wire from="(210,190)" to="(230,190)"/>
+    <wire from="(810,560)" to="(810,620)"/>
+    <wire from="(310,140)" to="(320,140)"/>
     <wire from="(170,120)" to="(180,120)"/>
-    <wire from="(260,120)" to="(270,120)"/>
-    <wire from="(180,120)" to="(180,300)"/>
-    <wire from="(170,60)" to="(170,120)"/>
-    <comp lib="0" loc="(140,40)" name="Probe">
-      <a name="radix" val="10unsigned"/>
+    <wire from="(800,140)" to="(800,260)"/>
+    <wire from="(310,140)" to="(310,190)"/>
+    <wire from="(990,140)" to="(1000,140)"/>
+    <wire from="(900,540)" to="(1040,540)"/>
+    <wire from="(790,140)" to="(800,140)"/>
+    <wire from="(890,120)" to="(900,120)"/>
+    <wire from="(370,140)" to="(370,580)"/>
+    <wire from="(170,280)" to="(170,340)"/>
+    <wire from="(180,410)" to="(180,470)"/>
+    <comp lib="0" loc="(750,190)" name="Tunnel">
+      <a name="label" val="S22"/>
     </comp>
-    <comp lib="0" loc="(90,120)" name="Clock"/>
+    <comp lib="1" loc="(450,470)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="0" loc="(710,160)" name="Clock"/>
+    <comp lib="1" loc="(450,350)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="0" loc="(1210,520)" name="Tunnel">
+      <a name="label" val="S20"/>
+    </comp>
+    <comp lib="1" loc="(1070,550)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="6" loc="(888,38)" name="Text">
+      <a name="text" val="0, 5,7, 1, 4"/>
+    </comp>
+    <comp lib="1" loc="(1110,360)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="1" loc="(490,530)" name="OR Gate">
+      <a name="size" val="30"/>
+    </comp>
     <comp lib="0" loc="(160,40)" name="Splitter">
       <a name="facing" val="south"/>
       <a name="fanout" val="3"/>
       <a name="incoming" val="3"/>
+      <a name="bit0" val="2"/>
+      <a name="bit2" val="0"/>
     </comp>
-    <comp lib="4" loc="(160,120)" name="D Flip-Flop"/>
-    <comp lib="4" loc="(360,120)" name="D Flip-Flop"/>
-    <comp lib="6" loc="(273,31)" name="Text">
+    <comp lib="0" loc="(960,190)" name="Tunnel">
+      <a name="label" val="S20"/>
+    </comp>
+    <comp lib="0" loc="(510,530)" name="Tunnel">
+      <a name="label" val="S0"/>
+    </comp>
+    <comp lib="1" loc="(450,590)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="6" loc="(274,31)" name="Text">
       <a name="text" val="0, 2, 5,7, 6, 1, 4,3"/>
     </comp>
-    <comp lib="4" loc="(260,120)" name="D Flip-Flop"/>
+    <comp lib="6" loc="(569,67)" name="Text">
+      <a name="text" val="OBS: lembre-se que os contades estão em ordem decrescente "/>
+    </comp>
+    <comp lib="6" loc="(128,735)" name="Text">
+      <a name="text" val="Se for 0 e 1/ 1 e 0 = 1, se for 0 e 0/ 1 e 1 = 0"/>
+    </comp>
+    <comp lib="4" loc="(160,120)" name="D Flip-Flop">
+      <a name="label" val="C"/>
+    </comp>
+    <comp lib="0" loc="(120,190)" name="Tunnel">
+      <a name="label" val="S2"/>
+    </comp>
+    <comp lib="1" loc="(490,260)" name="OR Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="0" loc="(140,40)" name="Probe">
+      <a name="radix" val="10unsigned"/>
+    </comp>
+    <comp lib="1" loc="(1110,430)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="1" loc="(450,410)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="0" loc="(230,190)" name="Tunnel">
+      <a name="label" val="S1"/>
+    </comp>
+    <comp lib="4" loc="(360,120)" name="D Flip-Flop">
+      <a name="label" val="A"/>
+    </comp>
+    <comp lib="1" loc="(450,290)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="0" loc="(770,40)" name="Probe">
+      <a name="radix" val="10unsigned"/>
+    </comp>
+    <comp lib="1" loc="(450,230)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="4" loc="(790,120)" name="D Flip-Flop">
+      <a name="label" val="C"/>
+    </comp>
+    <comp lib="6" loc="(87,719)" name="Text">
+      <a name="text" val="3 -&gt; 1 = 11 -&gt; 01 = Saida: 10"/>
+    </comp>
+    <comp lib="0" loc="(1210,300)" name="Tunnel">
+      <a name="label" val="S22"/>
+    </comp>
+    <comp lib="4" loc="(990,120)" name="D Flip-Flop">
+      <a name="label" val="A"/>
+    </comp>
+    <comp lib="0" loc="(790,40)" name="Splitter">
+      <a name="facing" val="south"/>
+      <a name="fanout" val="3"/>
+      <a name="incoming" val="3"/>
+      <a name="bit0" val="2"/>
+      <a name="bit2" val="0"/>
+    </comp>
+    <comp lib="0" loc="(1210,430)" name="Tunnel">
+      <a name="label" val="S21"/>
+    </comp>
+    <comp lib="0" loc="(80,160)" name="Clock"/>
+    <comp lib="6" loc="(254,679)" name="Text">
+      <a name="text" val="O contador T é semelhante, porem existe apenas uma mudança na hora de montar a tabela"/>
+    </comp>
+    <comp lib="0" loc="(510,380)" name="Tunnel">
+      <a name="label" val="S1"/>
+    </comp>
+    <comp lib="0" loc="(510,260)" name="Tunnel">
+      <a name="label" val="S2"/>
+    </comp>
+    <comp lib="6" loc="(248,699)" name="Text">
+      <a name="text" val="Em vez de seguir a ordem normal, se compara bit a bit e alterna a saida de acorcodo com"/>
+    </comp>
+    <comp lib="4" loc="(260,120)" name="D Flip-Flop">
+      <a name="label" val="B"/>
+    </comp>
+    <comp lib="1" loc="(1160,300)" name="OR Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="1" loc="(490,380)" name="OR Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="0" loc="(860,190)" name="Tunnel">
+      <a name="label" val="S21"/>
+    </comp>
+    <comp lib="1" loc="(1110,300)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="4" loc="(890,120)" name="D Flip-Flop">
+      <a name="label" val="B"/>
+    </comp>
+    <comp lib="0" loc="(340,190)" name="Tunnel">
+      <a name="label" val="S0"/>
+    </comp>
+    <comp lib="1" loc="(450,530)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="1" loc="(1110,520)" name="OR Gate">
+      <a name="size" val="30"/>
+    </comp>
+    <comp lib="1" loc="(1110,240)" name="AND Gate">
+      <a name="size" val="30"/>
+    </comp>
   </circuit>
 </project>
