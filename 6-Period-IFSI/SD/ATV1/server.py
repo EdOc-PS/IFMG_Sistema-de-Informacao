@@ -1,49 +1,43 @@
-import socket
-import json
-import csv
+import socket, yaml, toml, json, csv
 import xml.etree.ElementTree as ET
-import yaml
-import toml
 from io import StringIO
-import ast
 
-def serialize_csv(data):
-    output = StringIO()
-    writer = csv.DictWriter(output, fieldnames=data.keys())
-    writer.writeheader()
-    writer.writerow(data)
-    return output.getvalue()
+def desserializar (data, formato):
+    if formato == "JSON":
+        msg_desserializada = json.loads(data)
 
-def serialize_xml(data):
-    root = ET.Element("message")
-    for k, v in data.items():
-        child = ET.SubElement(root, k)
-        child.text = str(v)
-    return ET.tostring(root, encoding='unicode')
+    elif formato == "CSV":
+        msg_desserializada = list(csv.DictReader(StringIO(data)))[0] 
 
-HOST = '127.0.0.1'
-PORT = 8080
+    elif formato == "XML":
+        msg_desserializada = {child.tag: child.text for child in ET.fromstring(data)}
+
+    elif formato == "YAML":
+        msg_desserializada = yaml.safe_load(data)
+
+    elif formato == "TOML":
+        msg_desserializada = toml.loads(data)
+
+    print(f"\nDados em {formato}:")
+    print(msg_desserializada)
+
+host = '127.0.0.1'
+port = 5731
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
-    server.bind((HOST, PORT))
+    server.bind((host, port))
     server.listen()
-    print(f"Servidor rodando em {HOST}:{PORT}...")
+    print(f"Servidor rodando em {host}:{port}")
     
     conn, addr = server.accept()
+
     with conn:
-        
-        # Recebe
-        data = ast.literal_eval(conn.recv(4096).decode())  # string para dicionário
-        
-        # Serializa
-        formats = {
-            "JSON": json.dumps(data),
-            "CSV": serialize_csv(data),
-            "XML": serialize_xml(data),
-            "YAML": yaml.dump(data),
-            "TOML": toml.dumps(data)
-        }
-        
-        # Devolve
-        for fmt, body in formats.items():
-            conn.sendall(f"\n{fmt}: \n{body}".encode())
+        for _ in range(5): 
+            formato = conn.recv(1024).decode()
+            conn.sendall(b"ACK")  
+
+            data = conn.recv(4096).decode()
+            conn.sendall(b"ACK")  
+
+            desserializar(data, formato)
+
