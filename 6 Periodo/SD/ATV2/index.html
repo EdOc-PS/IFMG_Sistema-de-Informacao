@@ -13,6 +13,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: monospace;
         }
 
         body {
@@ -24,11 +25,16 @@
         .container {
             padding: 2rem;
             display: flex;
+            gap: 2rem;
             align-items: center;
             flex-direction: column;
-            width: 500px;
+            width: 450px;
         }
-
+        h1{
+            color: #374957;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+        }
         i {
             display: flex;
             align-items: center;
@@ -45,7 +51,7 @@
 
         button {
             border: 0;
-            padding: 1.15rem;
+            padding: 1.25rem;
             font-size: 20px;
             border-radius: 50%;
             cursor: pointer;
@@ -91,7 +97,6 @@
             flex-direction: column;
             box-shadow: 0 0 20px #37495771;
             width: 100%;
-            margin-top: 2rem;
             padding: 1rem;
             border-radius: 20px;
             gap: 1rem;
@@ -120,6 +125,7 @@
 
 <body>
     <main class="container">
+        <h1>Atividade 2</h1>
         <div class="container_actions">
             <button id="getBtn"><i class="fi fi-sr-search"></i></button>
             <button id="postBtn"><i class="fi fi-sr-plus"></i></button>
