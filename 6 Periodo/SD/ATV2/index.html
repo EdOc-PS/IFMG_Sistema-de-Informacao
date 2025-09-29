@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <title>atv2</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .container {
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 500px;
+        }
+
+        i {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #374957;
+            transition: .3s ease;
+        }
+
+        .container_actions {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        button {
+            border: 0;
+            padding: 1.15rem;
+            font-size: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: .3s ease;
+
+
+            &:nth-child(1):hover {
+                background-color: #d6f0fd;
+
+                i {
+                    color: #2c8cf4;
+                }
+            }
+
+            &:nth-child(2):hover {
+                background-color: #d6fdd9;
+
+                i {
+                    color: #009d73;
+                }
+            }
+
+            &:nth-child(3):hover {
+                background-color: #e3e4ff;
+
+                i {
+                    color: #5f5ff6;
+                }
+            }
+
+            &:nth-child(4):hover {
+                background-color: #fdd6d6;
+
+                i {
+                    color: #f65f5f;
+                }
+            }
+
+        }
+
+        .container_inputs {
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 20px #37495771;
+            width: 100%;
+            margin-top: 2rem;
+            padding: 1rem;
+            border-radius: 20px;
+            gap: 1rem;
+        }
+
+        .body {
+            display: flex;
+            flex-direction: column;
+            background-color: #f0f0f0;
+            color: #374957;
+            padding: 1rem;
+            border-radius: 15px;
+
+            input {
+                border: 0;
+                outline: none;
+                background-color: transparent;
+            }
+        }
+        p{
+            margin-top: 4rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <div class="container_actions">
+            <button id="getBtn"><i class="fi fi-sr-search"></i></button>
+            <button id="postBtn"><i class="fi fi-sr-plus"></i></button>
+            <button id="putBtn"><i class="fi fi-sr-pencil"></i></button>
+            <button id="deleteBtn"><i class="fi fi-sr-trash"></i> </button>
+        </div>
+
+        <div class="container_inputs">
+            <div class="body">
+                <input type="text" id="name" placeholder="Nome:">
+            </div>
+            <div class="body">
+                <input type="text" id="email" placeholder="Email:">
+            </div>
+
+        </div>
+
+
+        <p id="textResponse"></p>
+    </main>
+
+    <script>
+        const apiUrl = "http://127.0.0.1:5000/";
+        
+        document.getElementById("getBtn").addEventListener("click", async () => {
+            const response = await fetch(`${apiUrl}?name=${document.getElementById("name").value}`);
+            const data = await response.json();
+
+            document.getElementById("textResponse").innerText = data.message;
+        });
+
+        document.getElementById("postBtn").addEventListener("click", async () => {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+
+            const response = await fetch(apiUrl, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name: name, email: email })
+            });
+
+            const data = await response.json();
+            document.getElementById("textResponse").innerText = "Criado com sucesso!";
+        });
+
+        document.getElementById("putBtn").addEventListener("click", async () => {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+
+            const response = await fetch(apiUrl, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name: name, email: email })
+            });
+
+            const data = await response.json();
+            document.getElementById("textResponse").innerText = data.message;;
+        });
+
+        document.getElementById("deleteBtn").addEventListener("click", async () => {
+            const name = document.getElementById("name").value;
+            const res = await fetch(apiUrl, {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name: name })
+            });
+
+            const data = await res.json();
+            document.getElementById("textResponse").innerText = "Deletado com sucesso!";
+        });
+    </script>
+</body>
+
+</html>
