@@ -3,7 +3,7 @@ from flask_cors import CORS
 from pymongo import MongoClient
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app) 
 
 
 client = MongoClient("mongodb+srv://eduardo:123abc123@user-server.yc55azr.mongodb.net/?retryWrites=true&w=majority&appName=user-server")
@@ -11,7 +11,7 @@ db = client["user-server"]
 collection = db["records"]
 
 @app.route("/", methods=["GET"])
-def get_record():
+def query_records():
     name = request.args.get("name")
     record = collection.find_one({"name": name}, {"_id": 0}) 
     if not record:
@@ -26,7 +26,9 @@ def get_record():
 def create_record():
     data = request.get_json()
     collection.insert_one(data)
-    return jsonify(data), 201
+    return jsonify({
+        "message": f"Foi criado o usuário {data['name']} com o email {data['email']}"
+    }), 201
 
 
 @app.route("/", methods=["PUT"])
@@ -47,7 +49,7 @@ def delete_record():
     if result.deleted_count == 0:
         return jsonify({"message": f"Usuário {data["name"]} não encontrado"}), 404
     
-    return jsonify({"message": "deleted"}), 200
+    return jsonify({"message": "Deletado com sucesso!"}), 200
 
 if __name__ == "__main__":
     app.run(debug=True)

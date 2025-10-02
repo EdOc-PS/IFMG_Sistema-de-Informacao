@@ -168,7 +168,7 @@
             });
 
             const data = await response.json();
-            document.getElementById("textResponse").innerText = "Criado com sucesso!";
+            document.getElementById("textResponse").innerText = data.message;;
         });
 
         document.getElementById("putBtn").addEventListener("click", async () => {
@@ -182,7 +182,7 @@
             });
 
             const data = await response.json();
-            document.getElementById("textResponse").innerText = data.message;;
+            document.getElementById("textResponse").innerText = data.message;
         });
 
         document.getElementById("deleteBtn").addEventListener("click", async () => {
@@ -194,7 +194,7 @@
             });
 
             const data = await res.json();
-            document.getElementById("textResponse").innerText = "Deletado com sucesso!";
+            document.getElementById("textResponse").innerText = data.message;
         });
     </script>
 </body>
