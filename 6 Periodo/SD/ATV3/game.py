@@ -1,12 +1,15 @@
 import turtle
 import time
 
-def start_game(proxy, MY_ID, my_initial_state, username, delay=0.1):
+score = 0
+high_score = 0
+
+def start_game(proxy, id, my_initial_state, username, delay=0.1):
     wn = turtle.Screen()
-    wn.title(f"{username}")
+    wn.title(f"Move Game by @Garrocho, Player: {username}")
     wn.bgcolor("green")
-    wn.setup(width=800, height=600)
-    wn.tracer(0)
+    wn.setup(width=1.0, height=1.0, startx=None, starty=None)
+    wn.tracer(0)# Turns off the screen updates
 
     # Cria o jogador principal
     head = turtle.Turtle()
@@ -53,7 +56,7 @@ def start_game(proxy, MY_ID, my_initial_state, username, delay=0.1):
 
         current_pos = (head.xcor(), head.ycor())
         if current_pos != last_pos:
-            proxy.root.publish_move(MY_ID, current_pos[0], current_pos[1])
+            proxy.root.publish_move(id, current_pos[0], current_pos[1])
             last_pos = current_pos
 
         # Atualiza estado do jogo
@@ -61,7 +64,7 @@ def start_game(proxy, MY_ID, my_initial_state, username, delay=0.1):
 
         # Atualiza posição dos outros jogadores
         for player_id, state in game_state.items():
-            if player_id == MY_ID:
+            if player_id == id:
                 continue
 
             if player_id not in other_players_turtles:
