@@ -1,48 +1,64 @@
 import turtle
 import time
 
+# Score
 score = 0
 high_score = 0
 
-def start_game(proxy, id, my_initial_state, username, delay=0.1):
+def start_game(proxy, id, player_states, username):
+    delay = 0.1
+
+    # Set up the screen
     wn = turtle.Screen()
     wn.title(f"Move Game by @Garrocho, Player: {username}")
     wn.bgcolor("green")
     wn.setup(width=1.0, height=1.0, startx=None, starty=None)
-    wn.tracer(0)# Turns off the screen updates
+    wn.tracer(0) # Turns off the screen updates
 
-    # Cria o jogador principal
+    # gamer 1
     head = turtle.Turtle()
     head.speed(0)
-    head.shape("circle")
-    head.color(my_initial_state['color'])
+    head.shape("turtle")
+    head.color(player_states['color'])
     head.penup()
-    head.goto(my_initial_state['x'], my_initial_state['y'])
+    head.goto(player_states['x'], player_states['y'])
     head.direction = "stop"
 
-    # Dicionário para rastrear outros jogadores
-    other_players_turtles = {}
-    last_pos = (head.xcor(), head.ycor())
-
-    # Funções de movimento
+    # Functions
     def go_up():
-        if head.direction != "down": head.direction = "up"
+        head.direction = "up"
+
     def go_down():
-        if head.direction != "up": head.direction = "down"
+        head.direction = "down"
+
     def go_left():
-        if head.direction != "right": head.direction = "left"
+        head.direction = "left"
+   
     def go_right():
-        if head.direction != "left": head.direction = "right"
+        head.direction = "right"
+
     def close():
         wn.bye()
 
+    #aceleração
     def move():
-        if head.direction == "up": head.sety(head.ycor() + 2)
-        if head.direction == "down": head.sety(head.ycor() - 2)
-        if head.direction == "left": head.setx(head.xcor() - 2)
-        if head.direction == "right": head.setx(head.xcor() + 2)
+        if head.direction == "up":
+            y = head.ycor()
+            head.sety(y + 2)
 
-    # Controles
+        if head.direction == "down":
+            y = head.ycor()
+            head.sety(y - 2)
+
+        if head.direction == "left":
+            x = head.xcor()
+            head.setx(x - 2)
+
+        if head.direction == "right":
+            x = head.xcor()
+            head.setx(x + 2)
+
+    # Keyboard bindings
     wn.listen()
     wn.onkeypress(go_up, "w")
     wn.onkeypress(go_down, "s")
@@ -50,33 +66,33 @@ def start_game(proxy, id, my_initial_state, username, delay=0.1):
     wn.onkeypress(go_right, "d")
     wn.onkeypress(close, "Escape")
 
-    # Loop principal do jogo
+    # lista de outros players
+    other_players = {}
+    last_posistion = (head.xcor(), head.ycor())
+
+    # Keyboard bindings
     while True:
         move()
 
-        current_pos = (head.xcor(), head.ycor())
-        if current_pos != last_pos:
-            proxy.root.publish_move(id, current_pos[0], current_pos[1])
-            last_pos = current_pos
+        current_position = (head.xcor(), head.ycor())
+        if current_position != last_posistion:
+            proxy.root.movements(id, current_position[0], current_position[1])
+            last_posistion = current_position
 
-        # Atualiza estado do jogo
-        game_state = proxy.root.get_game_state()
-
-        # Atualiza posição dos outros jogadores
-        for player_id, state in game_state.items():
+        for player_id, player_content in (proxy.root.get_current_player_states()).items():
             if player_id == id:
                 continue
 
-            if player_id not in other_players_turtles:
-                new_player_turtle = turtle.Turtle()
-                new_player_turtle.speed(0)
-                new_player_turtle.shape("circle")
-                new_player_turtle.color(state['color'])
-                new_player_turtle.penup()
-                other_players_turtles[player_id] = new_player_turtle
-                print(f"👤 Novo jogador detectado: {player_id[:8]}")
+            if player_id not in other_players:
+                new_player = turtle.Turtle()
+                new_player.speed(0)
+                new_player.shape("turtle")
+                new_player.color(player_content['color'])
+                new_player.penup()
+                other_players[player_id] = new_player
+                print(f"Player detectado: {player_content['username']}")
 
-            other_players_turtles[player_id].goto(state['x'], state['y'])
+            other_players[player_id].goto(player_content['x'], player_content['y'])
 
         wn.update()
         time.sleep(delay)

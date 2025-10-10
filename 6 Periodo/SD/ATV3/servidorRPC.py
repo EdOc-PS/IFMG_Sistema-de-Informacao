@@ -1,47 +1,42 @@
 import rpyc
 import random
-import threading
 from rpyc.utils.server import ThreadedServer
 
 port = 18861
 
-class GameService(rpyc.Service):
+class GameServer(rpyc.Service):
     players = {}
-    lock = threading.Lock()
 
-    def connect(self, conn):
-        print("Novo jogador conectado.")
-
-    def disconnect(self, conn):
-        print("Jogador desconectado.")
-
-    def exposed_register_player(self):
-        with self.lock:
-            player_id = str(random.randint(1000, 9999))
-            colors = ["red", "blue", "yellow", "orange", "purple", "white", "cyan"]
-            player_state = {
-                'x': random.randint(-200, 200),
-                'y': random.randint(-200, 200),
+    # def exposed_contador_linha(self, objeto_arquivo):
+    #     n_linhas = len(objeto_arquivo.readlines())
+    #     return n_linhas
+    
+    def exposed_register(self, username):
+            id = str(random.randint(1000, 9999))
+            colors = ["crimson", "aquamarine", "pink", "gold", "red", "brown", 
+                      "blue", "yellow", "orange", "purple", "white", "cyan"]
+            player_content = {
+                'x': 0,
+                'y': 0,
                 'color': random.choice(colors),
-                
+                'username': username
             }
-            self.players[player_id] = player_state
-            print(f"🧍 Novo jogador registrado: {player_id[:8]} | Total: {len(self.players)}")
-            return player_id, player_state
+            self.players[id] = player_content
+            print(f"Player registrado: {username} - Total: {len(self.players)}")
+            return id, player_content
 
-    def exposed_publish_move(self, player_id, x, y):
-        with self.lock:
-            if player_id in self.players:
-                self.players[player_id]['x'] = x
-                self.players[player_id]['y'] = y
+    def exposed_get_current_player_states(self):
+            return dict(self.players)
+    
+    def exposed_movements(self, id, x, y):
+            if id in self.players:
+                self.players[id]['x'] = x
+                self.players[id]['y'] = y
                 return True
             return False
-
-    def exposed_get_game_state(self):
-        with self.lock:
-            return dict(self.players)
+    
 
 if __name__ == "__main__":
     print(f"Rodando em 127.0.0.1:{port}\n")
-    t = ThreadedServer(GameService, port=port, protocol_config={'allow_public_attrs': True})
+    t = ThreadedServer(GameServer, port=port, protocol_config={'allow_public_attrs': True})
     t.start()
