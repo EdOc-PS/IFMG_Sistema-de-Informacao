@@ -24,6 +24,10 @@ def start_game(proxy, id, player_states, username):
     head.goto(player_states['x'], player_states['y'])
     head.direction = "stop"
 
+    # lista de outros players
+    other_players = {}
+    last_posistion = (head.xcor(), head.ycor())
+
     # Functions
     def go_up():
         head.direction = "up"
@@ -38,6 +42,7 @@ def start_game(proxy, id, player_states, username):
         head.direction = "right"
 
     def close():
+        # proxy.root.remove_player(id)
         wn.bye()
 
     #aceleração
@@ -66,9 +71,7 @@ def start_game(proxy, id, player_states, username):
     wn.onkeypress(go_right, "d")
     wn.onkeypress(close, "Escape")
 
-    # lista de outros players
-    other_players = {}
-    last_posistion = (head.xcor(), head.ycor())
+
 
     # Keyboard bindings
     while True:
@@ -78,6 +81,10 @@ def start_game(proxy, id, player_states, username):
         if current_position != last_posistion:
             proxy.root.movements(id, current_position[0], current_position[1])
             last_posistion = current_position
+        
+        # if id not in (proxy.root.get_current_player_states()).keys():
+        #     other_players[id].hideturtle()  
+        #     del other_players[id] 
 
         for player_id, player_content in (proxy.root.get_current_player_states()).items():
             if player_id == id:
@@ -92,7 +99,8 @@ def start_game(proxy, id, player_states, username):
                 other_players[player_id] = new_player
                 print(f"Player detectado: {player_content['username']}")
 
+                
             other_players[player_id].goto(player_content['x'], player_content['y'])
-
+          
         wn.update()
         time.sleep(delay)
