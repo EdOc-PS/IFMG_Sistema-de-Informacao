@@ -27,7 +27,10 @@ class GameServer(rpyc.Service):
 
     def exposed_get_current_player_states(self):
             return dict(self.players)
-    
+
+    # def exposed_remove_player(self, id):
+    #        del self.players[id]
+        
     def exposed_movements(self, id, x, y):
             if id in self.players:
                 self.players[id]['x'] = x
