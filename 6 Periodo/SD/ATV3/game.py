@@ -6,7 +6,7 @@ score = 0
 high_score = 0
 
 def start_game(proxy, id, player_states, username):
-    delay = 0.1
+    delay = 0.01
 
     # Set up the screen
     wn = turtle.Screen()
@@ -24,10 +24,6 @@ def start_game(proxy, id, player_states, username):
     head.goto(player_states['x'], player_states['y'])
     head.direction = "stop"
 
-    # lista de outros players
-    other_players = {}
-    last_posistion = (head.xcor(), head.ycor())
-
     # Functions
     def go_up():
         head.direction = "up"
@@ -42,7 +38,7 @@ def start_game(proxy, id, player_states, username):
         head.direction = "right"
 
     def close():
-        # proxy.root.remove_player(id)
+        proxy.root.remove_player(id)
         wn.bye()
 
     #aceleração
@@ -71,7 +67,9 @@ def start_game(proxy, id, player_states, username):
     wn.onkeypress(go_right, "d")
     wn.onkeypress(close, "Escape")
 
-
+     # lista de outros players
+    other_players = {}
+    last_posistion = (head.xcor(), head.ycor())
 
     # Keyboard bindings
     while True:
@@ -81,12 +79,9 @@ def start_game(proxy, id, player_states, username):
         if current_position != last_posistion:
             proxy.root.movements(id, current_position[0], current_position[1])
             last_posistion = current_position
-        
-        # if id not in (proxy.root.get_current_player_states()).keys():
-        #     other_players[id].hideturtle()  
-        #     del other_players[id] 
-
+         
         for player_id, player_content in (proxy.root.get_current_player_states()).items():
+
             if player_id == id:
                 continue
 
@@ -98,9 +93,15 @@ def start_game(proxy, id, player_states, username):
                 new_player.penup()
                 other_players[player_id] = new_player
                 print(f"Player detectado: {player_content['username']}")
-
                 
-            other_players[player_id].goto(player_content['x'], player_content['y'])
-          
+            other_players[player_id].goto(player_content['x'], player_content['y'])  
+
+        for player_id in list(other_players): 
+              if player_id not in (proxy.root.get_current_player_states()).keys():  
+                print(f"Não esta mais: {player_id}")
+                other_players[player_id].hideturtle()
+                del other_players[player_id]
+                
+
         wn.update()
         time.sleep(delay)
