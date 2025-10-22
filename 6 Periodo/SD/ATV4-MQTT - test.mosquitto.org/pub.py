@@ -8,6 +8,8 @@ username = input("Nome de jogador: ")
 client = mqtt.Client()
 client.connect(broker, port, 60)
 
+player_name = json.dumps({"username": username})
+
 def screen_home():
     wn = tkinter.Tk()
     wn.title("Menu do Jogo")
@@ -25,7 +27,7 @@ def screen_home():
         bg="#ffffff",
         fg="black"
     )
-    label.pack(expand=True)
+
     btn = tkinter.Button(
         wn,
         text="Procurar Partida",
@@ -36,7 +38,8 @@ def screen_home():
         pady=3,
         command=to_screen_searching
     )
-        
+    
+    label.pack(expand=True) 
     btn.pack(expand=True)
     wn.mainloop()
 
@@ -47,7 +50,7 @@ def screen_searching():
         wn.config(bg="#ffffff")
  
         def to_cancel_searching():
-             client.publish("/game/cancel", json.dumps({"username": username}))
+             client.publish("/game/cancel", player_name)
              wn.destroy()
              screen_home()
              
@@ -76,7 +79,6 @@ def screen_searching():
         wn.mainloop()
 
 def screen_accept_game():
-        
         wn = tkinter.Tk()
         wn.title("Aceitar Partida?")
         wn.geometry("250x100") 
@@ -85,11 +87,9 @@ def screen_accept_game():
         client = mqtt.Client()
         client.connect(broker, port, 60)
 
-        accepted = {"value": False}
         play_game(wn)
 
         def to_play_game():
-            accepted["value"] = True
             client.publish("/game/accept", json.dumps({
                 "username": username,
                 "accepted": True
@@ -128,10 +128,9 @@ def screen_accept_game():
 
         wn.mainloop() 
 
-msg = json.dumps({"username": username})
 
 def searching_game(wn):
-    client.publish("/game/join", msg)
+    client.publish("/game/join", player_name)
     
     def on_message(client, userdata, msg):
         if msg.topic == "/game/start":

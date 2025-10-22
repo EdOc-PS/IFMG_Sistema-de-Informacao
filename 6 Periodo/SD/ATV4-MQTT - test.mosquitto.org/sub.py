@@ -4,10 +4,9 @@ broker = "test.mosquitto.org"
 port = 1883
 players_searching = []
 players_accepted = set()
-
+timeout_thread = None 
 
 def start_match_timeout():
-    time.sleep(10)
     if len(players_accepted) < len(players_searching):
         print("Timeout. Partida cancelada.")
         players_accepted.clear()
@@ -16,15 +15,17 @@ def start_match_timeout():
         
 def on_message(client, userdata, msg):
     data = json.loads(msg.payload.decode())
-
+    global timeout_thread 
+    
     if msg.topic == "/game/join":    
         players_searching.append(data["username"])
         print(f"{data["username"]} entrou.")
 
-        if len(players_searching) == 1: 
+        if len(players_searching) == 2: 
             client.publish("/game/start", json.dumps({"start": True}))
             print("Partida encontrada;")
-            threading.Thread(target=start_match_timeout, daemon=True).start()
+            timeout_thread = threading.Timer(10, start_match_timeout)
+            timeout_thread.start()
 
     elif msg.topic == "/game/accept":
             if data["accepted"]:
@@ -41,6 +42,7 @@ def on_message(client, userdata, msg):
                 print(f"{data['username']} recusou")
                 players_accepted.clear()
                 players_searching.clear()
+                timeout_thread.cancel()
                 client.publish("/game/cancel-all", json.dumps({"start": True}))
             
         
