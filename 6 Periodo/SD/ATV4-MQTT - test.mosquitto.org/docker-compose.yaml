@@ -10,3 +10,14 @@ services:
       - 1883:1883
     restart: unless-stopped
 
+  rpyc:
+    image: python:3.10
+    container_name: rpyc_server
+    working_dir: /app
+    volumes:
+      - .:/app
+    network_mode: bridge
+    ports:
+      - "18861:18861"
+    command: sh -c "pip install rpyc && python servidorRPC.py"
+    restart: unless-stopped
